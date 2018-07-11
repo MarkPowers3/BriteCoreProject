@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Risk Test Page - Select a risk">
+
+        <title>Risk Test Page</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="css/test.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="javascript/knockout_test.js"></script>
+
+    </head>
+
+    <body>
+        <div>
+            <div class="container">
+                <div class="page-header">
+                    <h3>Risk Test Page</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">Please select a risk</div>
+                    <div class="col-md-4">
+                        <select id="risk" data-bind="options: risks, optionsValue: 'id', optionsText: 'name', event: {change: enableFields}">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <form class="fields" data-bind="visible: showFields">
+                <div class="container">
+                    <div class="page-header">
+                        <h3>Fields</h3>
+                    </div>
+                    <div data-bind="foreach: fields">
+
+                         <div data-bind="if: type == 'text'" class="row">
+                             <div class="col-md-2">
+                                 <p data-bind="text: name"></p>
+                             </div>
+                             <div class="col-md-10">
+                                 <input type="text" data-bind="attr: { id: uniqueId, maxlength: maxLength }"/>
+                             </div>
+                         </div>
+
+                         <div data-bind="if: type == 'date'" class="row">
+                             <div class="col-md-2">
+                                 <p data-bind="text: name"></p>
+                             </div>
+                             <div class="col-md-10">
+                                 <input type="text" data-bind="attr: { id: uniqueId }"/>
+                             </div>
+                         </div>
+
+                         <div data-bind="if: type == 'number'"class="row">
+                             <div class="col-md-2">
+                                 <p data-bind="text: name"></p>
+                             </div>
+                             <div class="col-md-10">
+                                 <input type="text" data-bind="numeric, attr: { id: uniqueId, maxlength: maxLength }" />
+                             </div>
+                         </div>
+
+                         <div data-bind="if: type == 'currency'"class="row">
+                             <div class="col-md-2">
+                                 <p data-bind="text: name"></p>
+                             </div>
+                             <div class="col-md-10">
+                                 <input type="text" data-bind="numeric, currency, attr: { id: uniqueId, maxlength: maxLength }" />
+                             </div>
+                         </div>
+
+                         <div data-bind="if: type == 'enum'" class="row">
+                             <div class="col-md-2">
+                                 <p data-bind="text: name"></p>
+                             </div>
+                             <div class="col-md-10">
+                                 <select data-bind="attr: { id: uniqueId }, options: options, optionsValue: 'val', optionsText: 'text'">
+                                 </select>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </body>
+
+</html>

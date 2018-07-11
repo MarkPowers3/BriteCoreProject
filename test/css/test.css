@@ -1,0 +1,25 @@
+
+    #ui-datepicker-div { display: none; }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+        -webkit-transition-delay: 9999s;
+        background-color: transparent !important
+    }
+
+    form.fields {
+        padding-bottom: 20px;
+    }
+
+    .fields .container {
+        background-color: #E8E8E8;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .page-header {
+        margin: 0;
+    }

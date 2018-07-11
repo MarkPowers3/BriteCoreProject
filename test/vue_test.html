@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Risk Test Page - Select a risk">
+
+        <title>Risk Test Page</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="css/test.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="javascript/vue_test.js"></script>
+
+    </head>
+    <body>
+
+        <div id="app-risks">
+            <div class="container">
+                <div class="page-header">
+                    <h3>{{ title }}</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">Please select a risk</div>
+                    <div class="col-md-4">
+                        <select id="risk" v-on:change="enableFields">
+                            <option v-for="risk in risks" v-bind:value="risk.id">{{ risk.name }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+           <form class="fields" v-show="showFields">
+                <div class="container">
+                    <div class="page-header">
+                        <h3>Fields</h3>
+                    </div>
+                    <template v-for="field in fields">
+                        <div v-if="field.type == 'text'" class="row">
+                            <div class="col-md-2">
+                                <p>{{ field.name }}</p>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" v-bind:id="field.uniqueId" v-bind:maxlength ="maxLength(field)"/>
+                            </div>
+                        </div>
+
+                        <div v-if="field.type == 'date'" class="row">
+                            <div class="col-md-2">
+                                <p>{{ field.name }}</p>
+                            </div>
+                            <div class="col-md-10">
+                                <date-picker v-bind:id="field.uniqueId"></date-picker>
+                            </div>
+                        </div>
+
+                         <div v-if="field.type == 'number'" class="row">
+                             <div class="col-md-2">
+                                 <p>{{ field.name }}</p>
+                             </div>
+                             <div class="col-md-10">
+                                 <input type="text" v-bind:id="field.uniqueId" v-bind:maxlength ="maxLength(field)" v-number />
+                             </div>
+                         </div>
+
+                        <div v-if="field.type == 'currency'" class="row">
+                            <div class="col-md-2">
+                                <p>{{ field.name }}</p>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" v-bind:id="field.uniqueId" v-bind:maxlength ="maxLength(field)" v-currency v-number/>
+                            </div>
+                        </div>
+
+                         <div v-if="field.type == 'enum'" class="row">
+                             <div class="col-md-2">
+                                 <p>{{ field.name }}</p>
+                             </div>
+                             <div class="col-md-10">
+                                 <select v-bind:id="field.uniqueId">
+                                     <option value="">Select One...</option>
+                                     <option v-for="option in field.options" :value="option.val">{{option.text}}</option>
+                                 </select>
+                             </div>
+                         </div>
+
+                    </template>
+				</div>
+		   </form>
+
+        </div>
+    </body>
+
+</html>
