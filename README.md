@@ -12,9 +12,10 @@ There are also 2 python files in the test directory that interact with the db to
 
 I built this in PyCHARM CE and ran it from there as well
 
-Test URL's:  http://s3.us-east-2.amazonaws.com/risktest/vue_test.html <br/>
-             http://s3.us-east-2.amazonaws.com/risktest/knockout_test.html
-             
-             
-RESTful Endpoints: http://18.219.94.67/risks<br/>
-                   http://18.219.94.67/risk/1 (this gets risk 1, can also pass 2 for second risk
+<b>Test URL's:</b>  
+vue.js: http://s3.us-east-2.amazonaws.com/risktest/vue_test.html <br/>
+knockout.js: http://s3.us-east-2.amazonaws.com/risktest/knockout_test.html
+                         
+<b>RESTful Endpoints:</b><br/>
+All risks: http://18.219.94.67/risks<br/>
+Individual risk: http://18.219.94.67/risk/1 (this gets risk 1, can also pass 2 for second risk
